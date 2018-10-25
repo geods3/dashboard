@@ -49,32 +49,3 @@ Auto-fix linting issues:
 ```
 npm run lint:fix
 ```
-
-## User stories
-### Create a dashboard page
-
-The dashbord page must contain:
-  1. Code.Hub's stats (students, courses, instructors and events)
-  2. a list with the last 5 courses
-  3. every course must have a link that leads to the course details page
-  4. a link that leads to the courses page
-
-### Create a courses page
-
-The courses page must contain:
-  1. all the available courses
-  2. every course must have a link that leads to the course details page
-
-### Create a course details page
-
-The course details page must contain:
-  1. all the details of the course
-  2. all the course instructors
-  3. an edit button that will edit the current course (edit the course inline or in another page)
-  4. a delete button that will delete the current course
-
-### Create an add new course page
-
-The add new course page must contain:
-  1. a form with the appropriate course fields
-  2. a submit button that posts the data correctly

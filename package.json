@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "api": "json-server --port 3000 db.json --routes routes.json",
+    "api": "json-server --port 3000 db.json",
     "start": "webpack-dev-server --config ./webpack.config.js --mode development --hot --inline --port 8080",
     "build": "webpack --mode production",
     "lint": "eslint --ext .jsx --ext .js app",

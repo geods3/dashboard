@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import AddEditForm from './common/AddEditForm';
+import AddEditForm from './AddEditForm';
 import moment from 'moment';
 import axios from "axios";
 

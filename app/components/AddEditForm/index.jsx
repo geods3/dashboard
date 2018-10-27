@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Header from "./Header";
-import LoadingComponent  from "./Loader";
+import Header from "../common/Header";
+import LoadingComponent  from "../common/Loader";
+import MyFormInput from "./components/MyFormInput";
 import moment from 'moment';
 import uniqid from 'uniqid';
 import 'react-dates/initialize';
@@ -70,33 +71,10 @@ class AddEditForm extends Component{
         <Well>
           <Header title={this.props.title} info={this.props.info} style={{fontSize: 25}}/>
           <Form onSubmit={this.handleSubmit}>
-            <FormGroup controlId="title" bsSize="small">
-              <ControlLabel>Title</ControlLabel>
-              <FormControl
-                type="text"
-                value={this.state.title}
-                placeholder="Title"
-                onChange={this.handleChange}
-              />
-            </FormGroup>
-            <FormGroup controlId="duration" bsSize="small">
-              <ControlLabel>Duration</ControlLabel>
-              <FormControl
-                type="text"
-                value={this.state.duration}
-                placeholder="Duration"
-                onChange={this.handleChange}
-              />
-            </FormGroup>
-            <FormGroup controlId="imagePath" bsSize="small">
-              <ControlLabel>Image path</ControlLabel>
-              <FormControl
-                type="text"
-                value={this.state.imagePath}
-                placeholder="Image path"
-                onChange={this.handleChange}
-              />
-            </FormGroup>
+            <MyFormInput id="title" placeholder="Title" title="Title" value={this.state.title} onChange={this.handleChange} />
+            <MyFormInput id="duration" placeholder="Duration" title="Duration" value={this.state.duration} onChange={this.handleChange} />
+            <MyFormInput id="imagePath" placeholder="Image path" bsSize="small" title="Image path" value={this.state.imagePath} onChange={this.handleChange} />
+
             <Checkbox id="open" checked={this.state.open} onChange={this.handleCheckChange}> Bookable</Checkbox>
             <FormGroup controlId="instructors" bsSize="small">
               <ControlLabel>Instructors</ControlLabel>

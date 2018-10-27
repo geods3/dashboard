@@ -3,13 +3,13 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Grid } from "react-bootstrap";
 import "./app.css";
-import Navigation from "./components/Navigation";
+import Navigation from "./components/common/Navigation";
 import Dashboard from "./components/Dashboard";
 import Courses from "./components/Courses";
 import Course from "./components/Course";
 import AddNewCourse from "./components/AddNewCourse";
 import EditCourse from "./components/EditCourse";
-import NotFound from "./components/NotFound";
+import NotFound from "./components/common/NotFound";
 
 class App extends Component {
 

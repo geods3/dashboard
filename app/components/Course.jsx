@@ -5,7 +5,7 @@ import Header from "./common/Header";
 import exists from 'node-file-exists';
 import LoadingComponent  from "./common/Loader";
 import { Row, Col, Image, Glyphicon, Button } from "react-bootstrap";
-import NotFound from "./NotFound";
+import NotFound from "./common/NotFound";
 import _ from "lodash";
 import axios from "axios";
 

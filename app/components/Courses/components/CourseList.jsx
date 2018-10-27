@@ -1,9 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import Header from "./common/Header";
-import LoadingComponent  from "./common/Loader";
 import exists from 'node-file-exists';
-import axios from "axios";
 import { Row, Col, Image, Panel, Glyphicon, Button } from "react-bootstrap";
 
 
@@ -43,36 +40,4 @@ const CourseList = (props) => {
   );
 };
 
-class Courses extends Component{
-
-    state = {
-      loading: true,
-      list: []
-    }
-
-    componentDidMount() {
-      this.setState({loading: true});
-
-      axios.get("http://localhost:3000/courses/").then(res => {
-        this.setState({ loading: false, list: res.data });   
-      }).catch(error => {
-        this.setState({ loading: false});
-      });
-    }
-
-    render() {
-
-      if (this.state.loading) {
-        return <LoadingComponent />;
-      }
-
-      return (
-            <>
-                <Header title="Courses" info="all"/>
-                <CourseList list = {this.state.list}/>
-            </>
-      );
-    }
-}
-
-export default Courses;
+export default CourseList;

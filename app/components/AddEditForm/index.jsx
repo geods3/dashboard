@@ -71,10 +71,9 @@ class AddEditForm extends Component{
         <Well>
           <Header title={this.props.title} info={this.props.info} style={{fontSize: 25}}/>
           <Form onSubmit={this.handleSubmit}>
-            <MyFormInput id="title" placeholder="Title" title="Title" value={this.state.title} onChange={this.handleChange} />
-            <MyFormInput id="duration" placeholder="Duration" title="Duration" value={this.state.duration} onChange={this.handleChange} />
-            <MyFormInput id="imagePath" placeholder="Image path" bsSize="small" title="Image path" value={this.state.imagePath} onChange={this.handleChange} />
-
+            <MyFormInput id="title"  title="Title" value={this.state.title} onChange={this.handleChange} />
+            <MyFormInput id="duration" title="Duration" value={this.state.duration} onChange={this.handleChange} />
+            <MyFormInput id="imagePath" title="Image path" value={this.state.imagePath} onChange={this.handleChange} />
             <Checkbox id="open" checked={this.state.open} onChange={this.handleCheckChange}> Bookable</Checkbox>
             <FormGroup controlId="instructors" bsSize="small">
               <ControlLabel>Instructors</ControlLabel>

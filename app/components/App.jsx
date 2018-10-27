@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Grid } from "react-bootstrap";
-import "../app.css";
 import Navigation from "./common/Navigation";
 import Dashboard from "./Dashboard";
 import Courses from "./Courses";

@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import Header from "../common/Header";
 import LoadingComponent  from "../common/Loader";
 import MyFormInput from "./components/MyFormInput";
+import MyCheckbox from "./components/MyCheckbox";
+import MyTextarea from "./components/MyTextarea";
+import MyGroupHeader from "./components/MyGroupHeader";
+import MyDatebox from "./components/MyDatebox";
+import MyButton from "./components/MyButton";
 import moment from 'moment';
 import uniqid from 'uniqid';
-import 'react-dates/initialize';
-import 'react-dates/lib/css/_datepicker.css';
-import { SingleDatePicker } from 'react-dates';
-import { Form, FormGroup, FormControl, Checkbox, InputGroup, Glyphicon, ControlLabel, Button, Well } from "react-bootstrap";
+import { Form, Well } from "react-bootstrap";
 
 class AddEditForm extends Component{
 
@@ -90,88 +92,44 @@ class AddEditForm extends Component{
             <MyFormInput id="title"  title="Title" value={this.state.title} onChange={this.handleChange} />
             <MyFormInput id="duration" title="Duration" value={this.state.duration} onChange={this.handleChange} />
             <MyFormInput id="imagePath" title="Image path" value={this.state.imagePath} onChange={this.handleChange} />
-            <Checkbox id="open" checked={this.state.open} onChange={this.handleCheckChange}> Bookable</Checkbox>
-            <FormGroup controlId="instructors" bsSize="small">
-              <ControlLabel>Instructors</ControlLabel>
-              <Checkbox id="01" checked={ _.includes(this.state.instructors, "01")} onChange={this.InstructorsChange}> John Tsevdos</Checkbox>
-              <Checkbox id="02" checked={ _.includes(this.state.instructors, "02")} onChange={this.InstructorsChange}> Yiannis Nikolakopoulos</Checkbox>
-            </FormGroup>
-            <FormGroup controlId="description" bsSize="small">
-              <ControlLabel>Description</ControlLabel>
-              <FormControl componentClass="textarea" style={{height: 100}} value={this.state.description} onChange={this.handleChange} placeholder="Description" />
-            </FormGroup>
-            <FormGroup>
-              <ControlLabel style={{fontSize: 22}}>Dates</ControlLabel>
-            </FormGroup>
-            <FormGroup controlId="startDate" bsSize="small" validationState={this.state.startDateValidation}>
-              <ControlLabel>Start Date</ControlLabel>
-              <SingleDatePicker
-                  id="startDate"
-                  small={true}
-                  block={true}
-                  openDirection="down"
-                  displayFormat= "DD/MM/YYYY"
-                  hideKeyboardShortcutsPanel={true}
-                  date={this.state.dates.start_date ? moment(this.state.dates.start_date): moment()} // momentPropTypes.momentObj or null
-                  onDateChange={  date => this.dateChange(date, 'startDate') } // PropTypes.func.isRequired
-                  focused={this.state.focused} // PropTypes.bool
-                  onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-              />
-            </FormGroup>
-            <FormGroup controlId="endDate" bsSize="small">
-              <ControlLabel>End Date</ControlLabel>
-              <SingleDatePicker
-                  id="endDate"
-                  small={true}
-                  block={true}
-                  openDirection="down"
-                  displayFormat= "DD/MM/YYYY"
-                  hideKeyboardShortcutsPanel={true}
-                  date={this.state.dates.end_date ? moment(this.state.dates.end_date): moment()} // momentPropTypes.momentObj or null
-                  onDateChange={date => this.dateChange(date, 'endDate') } // PropTypes.func.isRequired
-                  focused={this.state.focused2} // PropTypes.bool
-                  onFocusChange={({ focused: focused2 }) => this.setState({ focused2 })} // PropTypes.func.isRequired
-              />
-            </FormGroup>
-            <FormGroup>
-              <ControlLabel style={{fontSize: 22}}>Price</ControlLabel>
-            </FormGroup>
-            <FormGroup bsSize="small">
-              <ControlLabel>Early Bird</ControlLabel>
-              <InputGroup style= {{zIndex: 0}}>
-                <FormControl 
-                  id="earlybird"
-                  type="text" 
-                  placeholder="Early Bird" 
-                  value={this.state.price.early_bird || 0} 
-                  onChange={this.handlePriceChange} 
-                  type="number" 
-                />
-                <InputGroup.Addon>
-                  <Glyphicon glyph="euro" />
-                </InputGroup.Addon>
-              </InputGroup>
-            </FormGroup>
-            <FormGroup bsSize="small">
-              <ControlLabel>Normal</ControlLabel>
-              <InputGroup style= {{zIndex: 0}}>
-                <FormControl 
-                  id="normal"
-                  type="text" 
-                  placeholder="Normal" 
-                  value={this.state.price.normal || 0} 
-                  onChange={this.handlePriceChange} 
-                  type="number" 
-                />
-                <InputGroup.Addon>
-                  <Glyphicon glyph="euro" />
-                </InputGroup.Addon>
-              </InputGroup>
-            </FormGroup>
-            <FormGroup className="text-right" bsSize="small">
-              <Button type="submit" bsStyle='primary' >Submit</Button>
-            </FormGroup>
-                      
+            <MyCheckbox id="open" checked={this.state.open} onChange={this.handleCheckChange} title="Bookable" />
+            <MyGroupHeader title="Instructors" style={{marginTop: 10}} fontSize="15" />
+            <MyCheckbox id="01" checked={ _.includes(this.state.instructors, "01")}  onChange={this.InstructorsChange} title="John Tsevdos" />
+            <MyCheckbox id="02" checked={ _.includes(this.state.instructors, "02")}  onChange={this.InstructorsChange} title="Yiannis Nikolakopoulos" />
+            <MyTextarea id="description"  title="Description" value={this.state.description} onChange={this.handleChange} />
+            <MyGroupHeader title="Dates" />
+            <MyDatebox 
+              id="startDate" 
+              value={this.state.dates.start_date} 
+              onChange={this.dateChange} 
+              focused={this.state.focused} 
+              onFocusChange={({ focused }) => this.setState({ focused })} 
+            />
+            <MyDatebox 
+              id="endDate" 
+              value={this.state.dates.end_date} 
+              onChange={this.dateChange} 
+              focused={this.state.focused2} 
+              onFocusChange={({ focused: focused2 }) => this.setState({ focused2 })}
+            />
+            <MyGroupHeader title="Price" />
+            <MyFormInput 
+              type="number" 
+              id="earlybird" 
+              title="Early Bird" 
+              value={this.state.price.early_bird} 
+              onChange={this.handlePriceChange} 
+              icon="euro"
+            />
+            <MyFormInput 
+              type="number" 
+              id="normal" 
+              title="Normal" 
+              value={this.state.price.normal} 
+              onChange={this.handlePriceChange} 
+              icon="euro"
+            />
+            <MyButton right type="submit" title="Submit" />           
           </Form>
         </Well>
       );

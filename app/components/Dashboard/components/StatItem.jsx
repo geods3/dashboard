@@ -1,47 +1,24 @@
 import React from "react";
 import { Row, Col, Badge, ListGroup, ListGroupItem } from "react-bootstrap";
+import _ from "lodash";
 
 const StatItem = (props) => {
 
-    const { instructors, courses, events, students } = props;
-  
+  const stat = props.stats.map(function(stat){
     return (
-      <Row className="StatsRow">
-        <Col md={3}>
-          <ListGroup>
-            <ListGroupItem>
-              <Badge>{students}</Badge>
-                          STUDENTS:
-            </ListGroupItem>
-          </ListGroup>
-        </Col>
-        <Col md={3}>
-          <ListGroup>
-            <ListGroupItem>
-              <Badge>{courses}</Badge>
-                          COURSES:
-            </ListGroupItem>
-          </ListGroup>
-        </Col>
-        <Col md={3}>
-          <ListGroup>
-            <ListGroupItem>
-              <Badge>{instructors}</Badge>
-                          INSTRUCTORS:
-            </ListGroupItem>
-          </ListGroup>
-        </Col>
-        <Col md={3}>
-          <ListGroup>
-            <ListGroupItem>
-              <Badge>{events}</Badge>
-                          EVENTS:
-            </ListGroupItem>
-          </ListGroup>
-        </Col>
-      </Row>
+      <Col md={3} key={stat.id}>
+        <ListGroup>
+          <ListGroupItem>
+            <Badge>{stat.amount}</Badge>
+            {stat.title.toUpperCase()}
+          </ListGroupItem>
+        </ListGroup>
+      </Col>
     );
-      
+  });
+
+  return <Row className="StatsRow">{stat}</Row>;
+  
 };
 
 export default StatItem;

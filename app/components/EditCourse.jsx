@@ -1,26 +1,6 @@
 import React, { Component } from "react";
 import AddEditForm from './AddEditForm';
-import moment from 'moment';
 import axios from "axios";
-
-var defaultState = {
-  id: '',
-  title: '',
-  duration: '',
-  imagePath: '',
-  open: false,
-  instructors: [],
-  description: '',
-  dates: {
-    start_date: moment().format('YYYY-MM-DD'),
-    end_date: moment().format('YYYY-MM-DD')
-  },
-  price: {
-    normal: 0,
-    early_bird: 0
-  }
-
-}
 
 class EditCourse extends Component{
 

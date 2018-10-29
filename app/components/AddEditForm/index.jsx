@@ -11,7 +11,23 @@ import { Form, FormGroup, FormControl, Checkbox, InputGroup, Glyphicon, ControlL
 
 class AddEditForm extends Component{
 
-    state = this.props.vars
+    state = this.props.vars || {
+      id: '',
+      title: '',
+      duration: '',
+      imagePath: '',
+      open: false,
+      instructors: [],
+      description: '',
+      dates: {
+        start_date: moment().format('YYYY-MM-DD'),
+        end_date: moment().format('YYYY-MM-DD')
+      },
+      price: {
+        normal: 0,
+        early_bird: 0
+      }
+    }
   
     componentWillReceiveProps(nextProps){
       this.setState(nextProps.vars) 

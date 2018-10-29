@@ -118,6 +118,23 @@
         "normal": 200,
         "early_bird": 150
       }
+    },
+    {
+      "id": "jnor3tlx",
+      "title": "My test course",
+      "duration": "4 weeks",
+      "imagePath": "https://www7.pcmag.com/media/images/405963-learn-to-code.jpg",
+      "open": true,
+      "instructors": [],
+      "description": "Code learn test",
+      "dates": {
+        "start_date": "2018-10-26",
+        "end_date": "2018-11-23"
+      },
+      "price": {
+        "normal": 150,
+        "early_bird": 100
+      }
     }
   ],
   "instructors": [

@@ -21,13 +21,11 @@ class Dashboard extends Component{
 
   componentDidMount() {
     this.setState({loading: true});
-    const stats = new Object();
-    const courses = new Array();
+    const courses = [];
 
     axios.get("http://localhost:3000/db").then(res => {
-      _.forEach(res.data.stats, function(value, key) { stats[value.title] = value.amount; });
       _.forEach(res.data.courses, function(value, key) { courses.push(value); });
-      this.setState({ loading: false, stats, courses });
+      this.setState({ loading: false, stats: res.data.stats, courses });
     });
   }
 
@@ -37,12 +35,11 @@ class Dashboard extends Component{
       return <LoadingComponent />;
     }
 
-    const courses = this.state.courses;
-
+    const {courses , stats} = this.state;
     return (
       <>
           <Hero />
-          <StatItem {...this.state.stats} />
+          <StatItem stats={stats} />
           <CourseTable courses={courses} />
       </>
     );

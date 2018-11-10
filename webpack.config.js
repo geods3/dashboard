@@ -1,6 +1,8 @@
 const path = require("path");
+var webpack = require('webpack');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+var BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const htmlPlugin = new HtmlWebPackPlugin({
   template: "./app/index.html",
@@ -15,11 +17,16 @@ const copyPlugin = new CopyWebpackPlugin([
   }
 ])
 
+const analyzer =  new BundleAnalyzerPlugin({
+  analyzerMode: 'static'
+})
+
 module.exports = {
   entry: "./app/index.jsx",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: '[name]-bundle.js',
+    chunkFilename: '[name].bundle.js',
     publicPath: '/'
   },
   module: {
@@ -40,13 +47,20 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/i,
-        use: ['file-loader?name=[name].[ext]&outputPath=img/&publicPath=img/', 'image-webpack-loader']
+        use: ['file-loader?name=[name].[ext]&outputPath=img/&publicPath=img/', 'img-loader']
       }
     ]
   },
   devServer: {
     overlay: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3005',
+        secure: false,
+        changeOrigin: true
+      }
+    }
   },
   resolve: {
     modules: [path.resolve("./app"), "node_modules"],
@@ -55,5 +69,22 @@ module.exports = {
   node: {
     fs: 'empty'
   },
-  plugins: [htmlPlugin, copyPlugin]
+  optimization: {
+
+    splitChunks: {
+      cacheGroups: {
+        node_vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          chunks: "initial",
+          priority: 1
+        }
+      }
+    }
+  },
+  plugins: [
+    htmlPlugin, 
+    copyPlugin,
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    // analyzer
+  ]
 };

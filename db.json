@@ -64,20 +64,21 @@
     },
     {
       "id": "03",
-      "title": "Advanced Analytics",
+      "title": "Advanced Analytics yolo",
       "imagePath": "https://www.codehub.gr/wp-content/uploads/2018/07/AdvancedAnalytics_1200x628.jpg",
       "price": {
         "normal": 450,
         "early_bird": 400
       },
       "dates": {
-        "start_date": "2018-10-12",
+        "start_date": "2018-11-10",
         "end_date": "2018-10-18"
       },
       "duration": "4 Fridays and 4 Saturdays",
       "open": true,
       "instructors": [
-        "02"
+        "02",
+        "01"
       ],
       "description": "<p>This is a certified program by <strong>Athens Tech College</strong>, the first educational institution in Greece that specialises in <strong>computer science</strong> and ICT studies.</p><p>Participant’s registration (payment’s completion) implies full compliance and acceptance οf Code.Learn – Terms &amp; Conditions.</p>"
     },
